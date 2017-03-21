@@ -1,0 +1,45 @@
+Lesson 5 notes.
+
+Hoisting in Javascript is putting the variable to the top declaration. However, it does not move the declared value.
+
+For example:
+console.log(test);
+var test = 5;
+console.log(test);
+
+Shows:
+undefined
+5
+
+If we were to amend above to test2, it would fail as test2 is not defined.
+console.log(test2);
+var test = 5;
+console.log(test2);
+
+A more advanced example:
+var text = 'outside';
+
+function logIt() {
+    console.log(text);
+    var text = 'inside';
+}
+logIt();
+
+Returns:
+undefined
+
+Other javascript array functions:
+Pop. Removes the last element.
+Shift. Removes the first element.
+
+We can loop in objects.
+var obj = {
+    name:'v',
+    age: '456',
+    occupation: 'dancing'
+}
+
+for(var key in obj)
+{
+  console.log(obj[key]);
+}

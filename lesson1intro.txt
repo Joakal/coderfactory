@@ -1,0 +1,49 @@
+Lesson 1 Intro.
+
+Language of the web
+
+Container can be a variable. Variable = reusability, reference, code structure, pace
+
+Get Atom with: Node download. 64 bit. Atom. Text editor
+
+In (Windows) cmd.exe, we can do the following
+
+mkdir CJFS
+cd CJFS
+
+Create a blank file
+copy NUL lesson1.js
+
+Open current directory
+start .
+
+
+Check out browser tools in developer section of browser. Click Show Logging.
+Or use this! https://repl.it/languages/javascript
+
+// create variable, called something, multiplication of 5 and 4
+var something = 5*4;
+console.log(something);
+// create variable called anotherthing that doubles something
+var anotherthing = 2 * something;
+console.log(anotherthing);
+// create variable lastthing that triples anotherthing
+var lastthing = 3 * anotherthing;
+console.log(lastthing);
+
+In JS, numbers and strings fall under true if checked.
+Empty strings '', 0, undefined and null fall under false.
+
+var apples = 'fruits';
+console.log(typeof apples);
+string
+
+Three pop up options; confirm, alert and prompt. CAP
+var apples = prompt('Apples are ?');
+var result = confirm("Is this statement true? " + apples);
+if(result)
+{
+  alert("The answer is unexpectedly " + result);
+}else{
+  alert("The answer is disappointedly " + result);
+}
