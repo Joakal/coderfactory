@@ -43,3 +43,20 @@ for(var key in obj)
 {
   console.log(obj[key]);
 }
+
+Arguments can get passed into a function with no parameters. Arguments are array-like. For example:
+
+function popArg(){
+  console.log(parameters);
+}
+
+popArg('a','b','c');
+
+It's possible to callback functions.
+
+function takeInput(input, func){
+  return func(input);
+}
+
+var result = takeInput('javascript', upperCase);
+// prints out JAVASCRIPT 

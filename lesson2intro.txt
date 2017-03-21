@@ -32,4 +32,4 @@ parameter vs arguement.
 
 parameter is equivalent of seats in a car
 
-arguments are actual people who site in the car
+arguments are actual people who sit in the car
