@@ -1,0 +1,5 @@
+Lesson 6
+
+Expanding understanding of arrays.
+
+For reading, read on ForEach and Map.
