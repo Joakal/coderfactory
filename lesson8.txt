@@ -1,0 +1,35 @@
+Lesson 8
+
+Grab express generator.
+
+$ npm install -g express-generator
+
+?
+$ express CRUD
+$ cd CRUD
+$ npm install
+
+Could install packages to the CRUD by running:
+$ npm install react --save
+
+Start crud
+$ npm start
+
+Can view:
+localhost:3000
+
+$ touch server.js
+$ atom .
+$ npm init
+
+Set up the server.js:
+express_app
+trial app
+y
+
+Install the stuff
+$ npm install --save express
+
+Amend server.js to have:
+var express = require('express'); // Including express
+var app = express();
