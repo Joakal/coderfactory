@@ -1,0 +1,59 @@
+Lesson 9
+
+With server.js;
+
+var express = require('express'); // Including express
+// var lesson1 = require('../lesson1.js') // can include files here
+var app = express();
+
+app.get('/', function(req, res) {
+    res.send('Hey I made a server');
+
+});
+
+app.listen(3000, function() {
+    console.log('Listening on port 3000');
+});
+
+We can automate restarts based on code changes.
+npm install --save nodemon
+
+Then replace in packages.json:
+"start": "node server.js"
+to
+"start": "nodemon server.js"
+
+A quicker way of installing dependencies is yarn.
+sudo npm install yarn -g
+yarn
+
+Can add the ejs view engine.
+yarn add ejs
+
+Then add in server.js:
+
+var viewEngine = require('ejs');
+
+app.engine('html', viewEngine.renderFile);
+app.set('view engine', 'html');
+
+Replace the line
+res.send('Hey I made a server. It works');
+With
+res.render('index', ('title': 'ejs'));
+
+Create views/index.html with the following:
+<h1>Welcome to <%= title %>!</h1>
+
+
+var obj = {
+occupation:'software'
+}
+
+var occupation = obj.occupation is same as:
+var { occupation } = obj;
+
+Several ways of starting npm (based on package.json).
+npm start
+npm dev
+etc
