@@ -1,0 +1,66 @@
+Lesson 10
+
+Install Postman (Chrome add-on). Go to localhost:3000/about to see the header response, especially for json responses such as:
+~controllers/profile.js
+export const profile = (req, res) => {
+    res.json({
+        name: 'andreas'
+    });
+}
+http://localhost:3000/profile
+
+Install MongoDB
+https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
+sudo mkdir -p /data/db
+
+
+Then the GUI
+https://robomongo.org/download
+
+If you need help moving the bin.
+http://stackoverflow.com/questions/35547860/how-to-install-robomongo-from-tar-gz-file-as-a-program-in-ubuntu-15-10
+export PATH=/usr/bin/robomongo/bin:$PATH
+
+Now, install mongoose!
+npm install --save mongoose
+
+
+var mongoose = require('mongoose');
+[..]
+mongoose.connect('mongodb://localhost/cfjs');
+
+Create user.js
+
+Node
+> Express
+>> Routes
+>>> Controllers
+>>> Views
+>> Mongoose
+>>> MongoD
+>>>> models
+
+Create model folder.
+EXPRESS_APP/model/user.js
+var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
+
+var User = new Schema({
+    name: String,
+    age: Number,
+    image: String
+});
+
+export default mongoose.model('User', User);
+
+EXPRESS_APP/controllers/user.js
+import User from '../Model/user';
+
+export const newUser = (req, res) => {
+    console.log(req, body);
+};
+
+In postman, choose POST and http://localhost:3000/newUser Pick Body -> Raw. Send the following:
+{
+	name : "Andreas"
+}

@@ -186,6 +186,14 @@ function filterLongWords(arr1, i) {
     });
     return result;
 }
+
+// Lecturer
+function lecFilterLongWords(arr1, i) {
+    var result = arr1.filter(function(elem) {
+        return word.length > i;
+    });
+    return result;
+}
 console.log(filterLongWords(merryChristmasArr, 7));
 
 // Write a function charFreq() that takes a string and builds a frequency listing of the characters contained in it. Represent the frequency listing as a Javascript object. Try it with something like charFreq("abbabcbdbabdbdbabababcbcbab").
