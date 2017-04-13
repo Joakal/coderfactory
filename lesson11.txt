@@ -1,0 +1,85 @@
+Lesson 11. Intro to React. Alex Girand
+
+React should be complemented with libraries such as: redux, lodash/underscore, d3. jQuery is something to learn as it's useful.
+
+Basics for dev: Atom, Chrome and Node
+
+npm install -g create-react-app
+
+Create the basic application:
+create-react-app todolist
+cd todolist
+npm start
+Cancel the server and start atom.
+atom .
+
+We'll examine App.js. To see such changes, amend the following:
+src/App.js
+<h2>Welcome to React, hello Andreas</h2>
+
+Website says: Welcome to React, hello Andreas
+
+We'll create a class to replace a paragraph from the intro.
+
+class Paragraph extends Component {
+
+As part of creating the class, note that the Component being extended was imported at top of page.
+
+render() {
+  return (
+    <p className="App-intro">
+      To get started, edit <code>src/App.js</code> and save to reload.
+    </p>
+  );
+}
+
+The render and return will return the code when Paragraph is called. Now we insert the class (where we replaced the App-intro bit)
+</div>
+<Paragraph />
+</div>
+
+Note on this line: <img src={logo} className="App-logo" alt="logo" />. The {logo} was called from "import logo from './logo.svg';"
+
+If you try to add a second <p></p>, React will throw an error. This is because it can only return one element, try using a <div> and it'll work.
+
+<div>
+<p className="App-intro">
+  To get started, edit <code>src/App.js</code> and save to reload.
+</p>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+</div>
+
+Lets make the logo a clickable event. Amend the relevant logo line in render(). We use 'this', to reference the internal method under the class:
+
+<img src={logo} className="App-logo" alt="logo" onClick={this.handleClick} />
+
+Then we add the function as below.
+class App extends Component {
+  handleClick(){
+    console.log('HEY!');
+  }
+  render() {
+
+We can pass data to the classes. Note the following code changes as we make use of props:
+<Paragraph text="This is our very first component." />
+<p className="App-intro">
+  {this.props.text}
+</p>
+
+Not sure what this is. PropTypes
+Add: import { PropTypes } from 'prop-types';
+After the Paragraph component add:
+Paragraph.propTypes = {
+  text: PropTypes.string
+}
+
+this.props.children.
+
+<Paragraph text="This is our very first component." />
+Convert into:
+<Paragraph>This is our very first component.</Paragraph>
+{this.props.text}
+Into:
+{this.props.children}
