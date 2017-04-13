@@ -1,1 +1,141 @@
 Lesson 12
+
+We make it more modular by moving the task items into its own component. Create a new component, TaskItem.js
+
+In it, add from TaskList:
+import React, { Component } from 'react';
+
+class TaskItem extends Component {
+  render() {
+    let task = this.props.task;
+    let className = "";
+    if (task.isCompleted) {
+      className = "TaskItem-completed";
+    }
+    return (
+      <li className={className}>
+        {task.label}
+      </li>
+    );
+  }
+}
+
+export default TaskItem;
+
+In TaskList.js
+<ul className="TasksList">
+  {
+    this.props.tasks.map(function (task, index) {
+      return (
+        <TaskItem key={index} task={task} />
+      );
+    })
+  }
+</ul>
+
+And add at top to include the TaskItem component:
+import { default as TaskItem } from './TaskItem';
+
+We can typecheck our code. Add to TaskItem.js:
+TaskItem.propTypes = {
+  task: PropTypes.shape({
+    label: PropTypes.string.isRequired,
+    isCompleted: PropTypes.bool.isRequired
+  }).isRequired
+};
+
+And at top: import PropTypes from 'prop-types';
+
+Now lets add tasks! Open TaskInput.js. Note the object 'e', values and more can come from this.
+import React, { Component } from 'react';
+// import './App.css';
+
+/* As a user, I can type some task, and when I press the key "Enter", I am expecting the task to be added into the list and the input to be cleared from the text. */
+
+class TaskInput extends Component {
+  keyUpHandler(e){
+    if(e.key === 'Enter'){
+      console.log("Enter pressed. Lets add!", e.target.value);
+      e.target.value = "";
+    }
+  }
+  render() {
+    return (
+      <input onKeyUp={this.keyUpHandler} type="text"/>
+    );
+  }
+}
+
+export default TaskInput;
+
+In App.js, amend the TaskInput:
+<TaskInput onTaskAdded={this.addTask} />
+
+Lets make use of this constructor: https://derickbailey.com/email-courses/masteringthis/ In TaskInput.js
+class TaskInput extends Component {
+  constructor(){
+    super();
+    this.keyUpHandler = this.keyUpHandler.bind(this);
+  }
+  keyUpHandler(e){
+
+With App,js add the following:
+constructor(){
+  super();
+  this.state = {
+    tasks: [
+    {
+      label: "Wash the dishies",
+      isCompleted: false
+    },
+    {
+      label: "Repair the car",
+      isCompleted: false
+    },
+    {
+      label: "Finish preparing course week 2",
+      isCompleted: true
+    }
+    ]
+  };
+}
+addTask(label){
+  this.setState({
+    tasks: this.state.tasks.concat([{
+      label: label,
+      isCompleted: false
+    }])
+  })
+}
+
+The basics of adding it. However, we're missing the addTask!
+...
+super();
+this.addTask = this.addTask.bind(this);
+this.state = {
+...
+
+Now lets toggle completed status. In TaskItem.js
+...
+class TaskItem extends Component {
+clickHandler(){
+  console.log("clickHandler!!!");
+}
+...
+Lets make it interactive!
+class TaskItem extends Component {
+constructor(props){
+  super();
+  this.state = {
+    isCompleted: props.isCompleted
+  }
+}
+
+Exercise:
+1 Create a clock that updates every seconds (use javascript 'setInterval').
+Format of: Sydney
+Today, +0HRS 4:37:07 PM
+
+2 As a user, I can set the timezone of the clock and the clock update the time accordingly. Tip: use 'moment.js'
+
+3 As a user, I can add or remove other clocks.
